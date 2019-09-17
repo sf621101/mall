@@ -2,6 +2,7 @@ package com.macro.mall.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
+import java.util.Date;
 
 public class PmsBrand implements Serializable {
     private Long id;
@@ -11,7 +12,7 @@ public class PmsBrand implements Serializable {
     @ApiModelProperty(value = "首字母")
     private String firstLetter;
 
-    private Integer sort;
+    private Date sort;
 
     @ApiModelProperty(value = "是否为品牌制造商：0->不是；1->是")
     private Integer factoryStatus;
@@ -59,11 +60,11 @@ public class PmsBrand implements Serializable {
         this.firstLetter = firstLetter;
     }
 
-    public Integer getSort() {
+    public Date getSort() {
         return sort;
     }
 
-    public void setSort(Integer sort) {
+    public void setSort(Date sort) {
         this.sort = sort;
     }
 

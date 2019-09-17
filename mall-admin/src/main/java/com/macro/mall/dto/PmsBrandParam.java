@@ -19,8 +19,8 @@ public class PmsBrandParam {
     @ApiModelProperty(value = "品牌首字母")
     private String firstLetter;
     @ApiModelProperty(value = "排序字段")
-    @Min(value = 0, message = "排序最小为0")
-    private Integer sort;
+//    @Min(value = 0, message = "排序最小为0")
+    private String sort;
     @ApiModelProperty(value = "是否为厂家制造商")
     @FlagValidator(value = {"0","1"}, message = "厂家状态不正确")
     private Integer factoryStatus;
@@ -51,11 +51,11 @@ public class PmsBrandParam {
         this.firstLetter = firstLetter;
     }
 
-    public Integer getSort() {
+    public String getSort() {
         return sort;
     }
 
-    public void setSort(Integer sort) {
+    public void setSort(String sort) {
         this.sort = sort;
     }
 

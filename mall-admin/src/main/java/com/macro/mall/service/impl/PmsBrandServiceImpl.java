@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -74,14 +75,26 @@ public class PmsBrandServiceImpl implements PmsBrandService {
     }
 
     @Override
-    public List<PmsBrand> listBrand(String keyword, int pageNum, int pageSize) {
+    public List<PmsBrand> listBrand(String keyword, int pageNum, int pageSize,String beginTime,String endTime) {
         PageHelper.startPage(pageNum, pageSize);
         PmsBrandExample pmsBrandExample = new PmsBrandExample();
         pmsBrandExample.setOrderByClause("sort desc");
         PmsBrandExample.Criteria criteria = pmsBrandExample.createCriteria();
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         if (!StringUtils.isEmpty(keyword)) {
             criteria.andNameLike("%" + keyword + "%");
         }
+        try {
+            if(!StringUtils.isEmpty(beginTime)){
+                criteria.andCreateTimeMoreThanOrEqualTo(simpleDateFormat.parse(beginTime+" 00:00:00"));
+            }
+            if(!StringUtils.isEmpty(endTime)){
+                criteria.andCreateTimeMoreThanOrEqualTo(simpleDateFormat.parse(endTime+" 23:59:59"));
+            }
+        }catch (Exception e){
+
+        }
+
         return brandMapper.selectByExample(pmsBrandExample);
     }
 

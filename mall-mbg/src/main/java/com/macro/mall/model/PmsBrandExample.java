@@ -1,6 +1,7 @@
 package com.macro.mall.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PmsBrandExample {
@@ -203,7 +204,15 @@ public class PmsBrandExample {
             addCriterion("name <=", value, "name");
             return (Criteria) this;
         }
+        public Criteria andCreateTimeLessThan(Date value) {
+            addCriterion("sort <=", value, "sort");
+            return (Criteria) this;
+        }
 
+        public Criteria andCreateTimeMoreThanOrEqualTo(Date value) {
+            addCriterion("sort >=", value, "sort");
+            return (Criteria) this;
+        }
         public Criteria andNameLike(String value) {
             addCriterion("name like", value, "name");
             return (Criteria) this;

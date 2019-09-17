@@ -654,7 +654,7 @@ CREATE TABLE `pms_album_pic` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='画册图片表';
 
--- ----------------------------
+--
 -- Records of pms_album_pic
 -- ----------------------------
 

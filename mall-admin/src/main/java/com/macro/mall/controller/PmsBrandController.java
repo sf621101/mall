@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -86,8 +87,11 @@ public class PmsBrandController {
     @PreAuthorize("hasAuthority('pms:brand:read')")
     public CommonResult<CommonPage<PmsBrand>> getList(@RequestParam(value = "keyword", required = false) String keyword,
                                                       @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
-                                                      @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
-        List<PmsBrand> brandList = brandService.listBrand(keyword, pageNum, pageSize);
+                                                      @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+                                                      @RequestParam(value = "beginTime", required = false) String beginTime,
+                                                      @RequestParam(value = "endTime", required = false) String endTime) {
+
+        List<PmsBrand> brandList = brandService.listBrand(keyword, pageNum, pageSize,beginTime,endTime);
         return CommonResult.success(CommonPage.restPage(brandList));
     }
 
