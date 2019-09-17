@@ -92,7 +92,7 @@
           <template slot-scope="scope">￥{{scope.row.totalAmount}}</template>
         </el-table-column>
         <el-table-column label="支付方式" width="120" align="center">
-          <template slot-scope="scope">{{scope.row.payType | formatPayType}}</template>
+          <template slot-scope="scope">微信</template>
         </el-table-column>
         <el-table-column label="订单来源" width="120" align="center">
           <template slot-scope="scope">{{scope.row.sourceType | formatSourceType}}</template>
@@ -114,10 +114,10 @@
               size="mini"
               @click="handleDeliveryOrder(scope.$index, scope.row)"
               v-show="scope.row.status===1">订单发货</el-button>
-            <el-button
-              size="mini"
-              @click="handleViewLogistics(scope.$index, scope.row)"
-              v-show="scope.row.status===2||scope.row.status===3">订单跟踪</el-button>
+            <!--<el-button-->
+              <!--size="mini"-->
+              <!--@click="handleViewLogistics(scope.$index, scope.row)"-->
+              <!--v-show="scope.row.status===2||scope.row.status===3">订单跟踪</el-button>-->
             <el-button
               size="mini"
               type="danger"
@@ -242,7 +242,7 @@
         ],
         sourceTypeOptions: [
           {
-            label: 'PC订单',
+            label: '微信小程序订单',
             value: 0
           },
           {
@@ -288,7 +288,7 @@
         if (value === 1) {
           return 'APP订单';
         } else {
-          return 'PC订单';
+          return '微信小程序订单';
         }
       },
       formatStatus(value) {

@@ -76,18 +76,14 @@
             oi.product_attr item_product_attr,
             oi.sp1 item_sp1,
             oi.sp2 item_sp2,
-            oi.sp3 item_sp3,
-            oh.id history_id,
-            oh.operate_man history_operate_man,
-            oh.create_time history_create_time,
-            oh.order_status history_order_status,
-            oh.note history_note
+            oi.sp3 item_sp3
+--             oh.id history_id
         FROM
             oms_order o
-            LEFT JOIN oms_order_item oi ON o.id = oi.order_id
-            LEFT JOIN oms_order_operate_history oh ON o.id = oh.order_id
+            LEFT JOIN oms_order_item oi ON o.order_sn = oi.order_sn
+--             LEFT JOIN oms_order_operate_history oh ON o.id = oh.order_id
         WHERE
             o.id = #{id}
-        ORDER BY oi.id ASC,oh.create_time DESC
+        ORDER BY o.create_time DESC
     </select>
 </mapper>
