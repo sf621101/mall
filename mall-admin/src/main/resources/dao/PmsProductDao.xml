@@ -41,5 +41,8 @@
     <select id="selectPrefrenceAreaProductRelationByProductId" resultMap="com.macro.mall.mapper.CmsPrefrenceAreaProductRelationMapper.BaseResultMap">
         select * from cms_prefrence_area_product_relation where product_id=#{productId}
     </select>
+    <select id="selectAll" resultType="com.macro.mall.model.PmsProduct">
+        select   id, name, pic,product_sn as productSn,sale, price, promotion_price as promotionPrice from pms_product;
+    </select>
 
 </mapper>

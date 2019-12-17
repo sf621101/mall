@@ -156,3 +156,69 @@ a:hover {
   color: #909399;
 }
 
+// 默认粒子背景的样式
+#particles{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: url("../assets/images/login-bg.jpg") center center no-repeat;
+  background-size: cover;
+  // filter: grayscale(30%);
+}
+
+// 登录页默认样式修改
+.login-BigBox{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 450px;
+  position: relative;
+  .login-topLeft{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    z-index: 100;
+    h2{
+      display: inline-block;
+      color:white;
+      margin: 0 10px;
+      line-height: 56px;
+      vertical-align: top;
+    }
+  }
+}
+
+.login-form-layout{
+  .el-card__body{
+    padding-bottom: 0;
+    padding-top: 30px;
+  }
+  .el-form-item{
+    margin-bottom: 15px;
+  }
+  .el-input__prefix{
+    color:#333;
+  }
+  .el-input--prefix .el-input__inner{
+    padding-left: 75px;
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    padding-bottom: 15px;
+    &:active,&:focus{
+      border-color: #ff7701;
+    }
+  }
+  .el-button--primary{
+    background: #ff7701;
+    border-color: #ff7701;
+    line-height: 2;
+    font-size: 16px;
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}

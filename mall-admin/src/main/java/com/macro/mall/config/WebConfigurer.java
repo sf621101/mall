@@ -13,7 +13,8 @@ public class WebConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        String paths="C:\\Users\\sf621\\Desktop\\mall\\images\\";
+//        String paths="C:\\Users\\sf621\\Desktop\\mall\\images\\";
+        String paths="/usr/local/images/";
         registry.addResourceHandler("/images/**").addResourceLocations("file:///"+paths);
     }
 }

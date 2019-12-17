@@ -1,23 +1,27 @@
 <template>
-  <div>
+  <div class="login-BigBox">
+
+    <!-- 左上角的logo -->
+    <div class="login-topLeft">
+      <svg-icon icon-class="login-mall" style="width: 45px;height: 45px;color: #ff7701"></svg-icon>
+      <h2>微信商城管理系统</h2>
+    </div>
     <el-card class="login-form-layout">
       <el-form autoComplete="on"
                :model="loginForm"
                :rules="loginRules"
                ref="loginForm"
                label-position="left">
-        <div style="text-align: center">
-          <svg-icon icon-class="login-mall" style="width: 56px;height: 56px;color: #409EFF"></svg-icon>
-        </div>
         <h2 class="login-title color-main">微信商城管理系统</h2>
         <el-form-item prop="username">
           <el-input name="username"
                     type="text"
                     v-model="loginForm.username"
                     autoComplete="on"
-                    placeholder="请输入用户名">
+                    placeholder="请输入用户名"
+                    clearable>
           <span slot="prefix">
-            <svg-icon icon-class="user" class="color-main"></svg-icon>
+            用&nbsp;户&nbsp;名
           </span>
           </el-input>
         </el-form-item>
@@ -27,23 +31,27 @@
                     @keyup.enter.native="handleLogin"
                     v-model="loginForm.password"
                     autoComplete="on"
-                    placeholder="请输入密码">
+                    placeholder="请输入密码"
+                    clearable>
           <span slot="prefix">
-            <svg-icon icon-class="password" class="color-main"></svg-icon>
+            登录密码
           </span>
             <span slot="suffix" @click="showPwd">
-            <svg-icon icon-class="eye" class="color-main"></svg-icon>
+            <svg-icon icon-class="eye" style="color:#ff7701"></svg-icon>
           </span>
           </el-input>
         </el-form-item>
-        <el-form-item style="margin-bottom: 60px">
+        <el-form-item style="margin: 70px -20px 0px">
           <el-button style="width: 100%" type="primary" :loading="loading" @click.native.prevent="handleLogin">
-            登录
+            登 &#x3000;录
           </el-button>
         </el-form-item>
       </el-form>
     </el-card>
-    <img :src="login_center_bg" class="login-center-layout">
+
+
+
+    <div id="particles"></div>
   </div>
 </template>
 
@@ -85,6 +93,16 @@
         supportDialogVisible:false
       }
     },
+    mounted(){
+      // 页面加载完成加载粒子组件
+      $(document).ready(function() {
+        $('#particles').particleground({
+          dotColor: "#4c4e50",
+          lineColor: "#4c4e50",
+          maxSpeedX:0.7
+        });
+      });
+    },
     methods: {
       showPwd() {
         if (this.pwdType === 'password') {
@@ -123,26 +141,40 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+  
   .login-form-layout {
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 360px;
-    margin: 140px auto;
-    border-top: 10px solid #409EFF;
+    border:none;
+    width: 430px;
+    z-index: 100;
+    overflow: visible;
+    border-radius: 8px;
   }
 
   .login-title {
-    text-align: center;
+    width: 350px;
+    margin: 0px auto 50px -40px;
+    font-weight: 400;
+    font-size: 18px;
+    background: #ff7701;
+    padding: 20px;
+    position: relative;
+    color: white;
+    &:before{
+      position: absolute;
+      bottom:-15px;
+      left:0;
+      content: '';
+      border-top: 15px solid #b85601;
+      border-left: 20px solid transparent;
+    }
   }
-
-  .login-center-layout {
-    background: #409EFF;
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    margin-top: 200px;
+  @media (max-width:440px){
+    .login-form-layout{
+      width: calc(100% - 50px);
+    }
+    .login-title{
+      width: 280px;
+    }
   }
 </style>
