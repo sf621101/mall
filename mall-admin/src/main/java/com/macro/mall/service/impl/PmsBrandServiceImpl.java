@@ -89,7 +89,7 @@ public class PmsBrandServiceImpl implements PmsBrandService {
                 criteria.andCreateTimeMoreThanOrEqualTo(simpleDateFormat.parse(beginTime+" 00:00:00"));
             }
             if(!StringUtils.isEmpty(endTime)){
-                criteria.andCreateTimeMoreThanOrEqualTo(simpleDateFormat.parse(endTime+" 23:59:59"));
+                criteria.andCreateTimeLessThan(simpleDateFormat.parse(endTime+" 23:59:59"));
             }
         }catch (Exception e){
 
